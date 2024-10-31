@@ -1,0 +1,309 @@
+---
+title: "Interactive Election Map"
+format:
+  dashboard:
+     theme: default
+     expandable: true
+     css: styles.css
+     nav-buttons:
+     - icon: linkedin
+       href: https://www.linkedin.com/in/lauren-bgerber/
+     - icon: envelope
+       href: mailto:laurenbgerber22@gmail.com
+       
+editor: visual
+---
+
+# Interactive U.S. Election Map from 1916-2020 {orientation="rows" scrolling="true"}
+
+```{=html}
+<div style="font-size: 18px; text-align: center; font-family: Monaco; margin: 3px auto 1px;" class="html-fill-item html-fill-container">
+  <strong>Below you can find an interactive U.S. Election Map for the years 1916-2020.</strong>
+</div>
+
+<img src="QOGlogo.jpeg" alt="QOG logo" width="6%" style="position: absolute; display: flex; align-content: end;"> 
+
+<!-- Button Container -->
+  <div style="display: flex; flex-direction: column; align-items: center; margin: 10px 0;">
+    <!-- Button for Info on Map -->
+    <button class='dropdown-button' onclick='toggleInfoOnMapModal()'>
+      Click for Map Info:
+      <span style="font-size: 12px;">&#9660;</span>
+        </button>
+        
+        <!-- Button for Main Trends -->
+        <button class='modal-button' onclick='toggleExplanationModal()'>
+          Explanation of Main Trends:
+          <span style="font-size: 12px;">&#9660;</span>
+            </button>
+            </div>
+            
+            <!-- Info on Map Modal -->
+            <div id="infoOnMapModal" class="modal-overlay">
+              <!-- Modal Content Box -->
+              <div class="modal-content-box" style="max-height: 400px;">
+                <!-- Close Button -->
+                <span class="close-modal" onclick="toggleInfoOnMapModal()">&times;</span>
+                  
+                  <!-- Info on Map Section -->
+                  <h4>Info on Map:</h4>
+                  <p>- Hover over any county to get the share of the winning party's vote, as well as the State and County name.</p>
+    <p>- Press the white button in the bottom left corner to animate throughout the years—press again to pause in a year of interest or use the slider to navigate manually to a year of interest!</p>
+    <p>- Use the (+) and (-) buttons to zoom in/out and drag your mouse to interesting areas.</p>
+  </div>
+</div>
+
+
+<!-- Explanation of Main Trends Modal -->
+<div id="explanationModal" class="modal-overlay">
+  <!-- Modal Content Box -->
+  <div class="modal-content-box" style="max-height: 810px;">
+    <!-- Close Button -->
+    <span class="close-modal" onclick="toggleExplanationModal()">&times;</span>
+
+    <!-- Explanation of Main Trends Section -->
+    <h4>Explanation of Main Trends:</h4>
+    <p>- Until 1964, Democrats were concentrated in the South and Republicans in the North. This is for historical reasons. Historically, Republicans were abolitionists and believed in State expansion. Democrats were agrarian, did not want the government involved, and wanted to keep slavery legal. After the Civil War, many rich Northern industrialists entered politics and left the South alone.</p>
+    <p>- Republicans continued to consist of many rich businessmen who favored "hands-off" policies. When the Great Depression hit in 1929, the Republican president chose not to intervene. The entire country voted more Democrat until the end of the Depression in 1939.</p>
+    <p>- In 1964, the Democratic candidate supported ending segregation and expanding government reform, while the Republican did not. This slowly started the main trend (barring anomalies) we see today with Democrats concentrated in the North and Republicans in the South.</p>
+    <p>- Citation: The Great Switch: How Republicans and Democrats flipped ideologies. (n.d.). <a href="https://www.studentsofhistory.com/ideologies-flip-Democratic-Republican-parties" style="color: #0c5460;">https://www.studentsofhistory.com/ideologies-flip-Democratic-Republican-parties</a></p>
+  </div>
+</div>
+
+<script>
+  // Wait for the DOM to fully load
+  document.addEventListener('DOMContentLoaded', function() {
+    // Select the play button
+    var playButton = document.getElementById('play-pause-button');
+    // Add the triangle character to the button
+    playButton.innerHTML = '&#9654;'; // Triangle character for play
+                  });
+</script>
+  
+  
+  <!-- Modal CSS -->
+  <style>
+  /* Modal Overlay */
+  .modal-overlay {
+    display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1000; /* Sit on top */
+      left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+      justify-content: center; /* Center modal content horizontally */
+      align-items: center; /* Center modal content vertically */
+  }
+
+/* Modal Content Box */
+  .modal-content-box {
+    background-color: #d1ecf1;
+      padding: 0px 15px; /* Increased padding for better appearance */
+      border-radius: 8px;
+    border: 2px solid #0c5460;
+    width: 80%; /* Use percentage for better responsiveness */
+      max-width: 400px; /* Maximum width for larger screens */
+      color: #0c5460;
+      position: relative;
+    margin: 0 auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto; /* Allow scrolling if content overflows */
+  }
+
+/* Close button */
+  .close-modal {
+    color: #aaa;
+      font-size: 18px;
+    font-weight: bold;
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+
+.close-modal:hover,
+.close-modal:focus {
+  color: black;
+}
+
+
+
+/* Button styles */
+  .dropdown-button, .modal-button {
+    font-family: Monaco;
+    width: 80%; /* Responsive width */
+      max-width: 200px; /* Maximum width */
+      height: 39px; /* Consistent height */
+      background-color: #d1ecf1; 
+      color: #0c5460; 
+      border-radius: 5px; 
+    border: 1px solid #0c5460; 
+    font-size: 12px; 
+    margin: 7px 0; /* Uniform margin */
+      transition: background-color 0.3s; /* Transition for hover effect */
+  }
+
+.dropdown-button:hover, .modal-button:hover {
+  background-color: #c1e2eb; /* Lighter shade on hover */
+}
+
+.close-modal {
+  font-size: 16px; /* Smaller font size for mobile */
+}
+
+.dropdown-button, .modal-button {
+  width: 90%; /* Increase button width for mobile */
+}
+}
+
+@media (max-width: 480px) {
+  .close-modal {
+    font-size: 14px; /* Even smaller font size for very small screens */
+  }
+  
+  .dropdown-button, .modal-button {
+    height: 36px; /* Adjust button height */
+      font-size: 10px; /* Smaller font size */
+  }
+}
+
+@media (max-width: 480px) {
+  /* New styles for play controls on small screens */
+    
+    #play-controls {
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Align items vertically */
+}
+
+#play-pause-button {
+transform: translateX(-35px);
+justify-content: center;
+align-items: center;
+/* Reset the position for small screens */
+  }
+
+#play-range {
+width: 50%; /* Adjust the width of the slider */
+  transform: translateX(-33px); /* Reset the position */
+  }
+
+#play-output {
+transform: translateX(-33px); /* Reset the position */
+  font-weight: bold; /* Optionally make the text size smaller */
+  }
+}
+
+</style>
+  
+  
+  <!-- Modal JavaScript -->
+  <script>
+  // Toggle function for Info on Map Modal
+function toggleInfoOnMapModal() {
+  var modal = document.getElementById("infoOnMapModal");
+  modal.style.display = modal.style.display === "none" || modal.style.display === "" ? "flex" : "none"; // Toggle visibility
+}
+
+// Toggle function for Explanation of Main Trends Modal
+function toggleExplanationModal() {
+  var modal = document.getElementById("explanationModal");
+  modal.style.display = modal.style.display === "none" || modal.style.display === "" ? "flex" : "none"; // Toggle visibility
+}
+
+// Close the modal when clicking outside the modal content
+window.onclick = function(event) {
+  var infoModal = document.getElementById("infoOnMapModal");
+  var explanationModal = document.getElementById("explanationModal");
+  if (event.target === infoModal) {
+    infoModal.style.display = "none"; // Close Info modal on background click
+  }
+  if (event.target === explanationModal) {
+    explanationModal.style.display = "none"; // Close Explanation modal on background click
+  }
+}
+</script>
+```
+::: {style="height: 95vh; margin: 2vh 2px auto; width: 98%"}
+```{r}
+#take what we want from external script: electionmap
+source("scripts/electionscript1.R")
+electionmap
+
+```
+:::
+
+# Identified Trends: {scrolling="true"}
+
+## Very Republican
+
+```{r}
+#| title: Support by Election Year for Counties Trending Very Republican
+#| fig-height: 6
+  
+#take very republican line chart 
+source("scripts/electionscript2.R")
+hcmtovrep2
+```
+
+```{r}
+#| title: Where Are These Counties?
+#| fig-height: 6
+source("scripts/electionscript2.R")
+#take very republican map
+veryrepublicanhc
+```
+
+## slightly republican-\>moderately republican
+
+```{r}
+#| title: Support by Election Year for Counties Trending Moderately Republican
+#| fig-height: 6
+source("scripts/electionscript2.R")
+
+#take slightly->moderately republican line chart
+hcsreptomrep2
+```
+
+```{r}
+#| title: Where Are These Counties?
+#| fig-height: 6
+source("scripts/electionscript2.R")
+#take slightly->moderately republican map
+slightlytomoderaterepublicanhc
+```
+
+## slightly democratic-\>slightly republican
+
+```{r}
+#| title: Support by Election Year for Relatively Static Counties
+#| fig-height: 6
+source("scripts/electionscript2.R")
+#take slightly democratic->slightly republican line chart
+hcsdemtosrep2
+```
+
+```{r}
+#| title: Where Are These Counties?
+#| fig-height: 6
+source("scripts/electionscript2.R")
+#take slightly democratic->slightly republican map
+swinghc
+```
+
+## slightly democratic-\>very democratic
+
+```{r}
+#| title: Support by Election Year for Counties Trending Democrat 
+#| fig-height: 6
+
+source("scripts/electionscript2.R")
+#take slightly democratic->very democratic line chart
+hcvtosdedm2
+```
+
+```{r}
+#| title: Where Are These Counties?
+#| fig-height: 6
+source("scripts/electionscript2.R")
+#take slightly democratic->very democratic map
+democrathc
+```

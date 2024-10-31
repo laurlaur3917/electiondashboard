@@ -1,0 +1,11 @@
+<style>
+.card-title  {
+    font-weight: bold !important;  /* This makes the title bold */
+}
+.card { 
+    margin-bottom: 30px; /* This adds spacing between the cards */
+    font-weight: bold 
+}
+</style>
+
+

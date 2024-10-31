@@ -1,0 +1,4 @@
+- source: dashboard.qmd
+  quarto-pub:
+    - id: 12ef0622-37b9-4620-b673-7b431151c328
+      url: 'https://laurlaur3917.quarto.pub/laurengselectiondashboard'
