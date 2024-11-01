@@ -8,7 +8,7 @@ Prerequisites
 [Quarto](https://quarto.org/) – To compile the dashboard
 R – For data processing and visualizations
 Libraries:
-R: ggplot2, highcharter, sf, tidyverse, jsonlite, geojsonio, tidyr, purrr, broom 
+R: highcharter, sf, tidyverse, jsonlite, geojsonio, broom 
 
 ## Download/Usage Instructions: 
 1. Clone the Repository:
