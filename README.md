@@ -1,7 +1,7 @@
 # Interactive Election Map and Trend Graphs 
 
 ## Description: 
-An interactive map visualizing U.S. county voting patterns from 1916 to 2020. Users can explore vote shares by party, examine trends over time, and dive into county-level data. Each county is categorized by voting trends, with visualizations showing aggregated vote percentages by category, the location of counties in each category, and individual county's vote percentages over the years.
+An interactive map visualizing U.S. county voting patterns from 1916 to 2020. Users can explore vote shares by party, examine trends over time, and dive into county-level data. Each county is categorized by voting trends, with visualizations showing aggregated vote percentages by category, the location of counties in each category, and individual county's vote share across the years.
 
 ## Installation:
 Prerequisites
